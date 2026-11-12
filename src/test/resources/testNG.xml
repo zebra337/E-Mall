@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="MainTest">
+
+    <test name="RegFormTest" parallel="false">
+        <classes>
+            <class name="RegFormTest">
+                <methods>
+                    <include name="checkRegFormData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
