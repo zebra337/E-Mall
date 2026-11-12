@@ -2,20 +2,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class RegFormTest {
-    @Test
-    public void checkRegFormData() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+
+    private WebDriver driver;
+    private WebDriverWait wait;
+
+    @BeforeMethod
+    public void setUp() {
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         System.setProperty("webdriver.chrome.driver", "D:\\0_0_0_Black\\Pzz\\chromedriver.exe");
         driver.get("https://emall.by");
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(9));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    }
+
+    @Test
+    public void checkRegFormData() throws InterruptedException {
 
         WebElement closeCookies1 = driver.findElement(By.xpath("//button[contains(@class, 'colour_white__FyCpn')]"));
         closeCookies1.click();
@@ -66,7 +79,7 @@ public class RegFormTest {
         followDownButton.click();
         Thread.sleep(1000);
 
-        WebElement checkAllCheckBox = driver.findElement(By.xpath("//label[contains(@class, 'checkbox__PbQ_G')]//i"));
+        WebElement checkAllCheckBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@class, 'checkbox__PbQ_G')]//i")));
         checkAllCheckBox.click();
 
         WebElement agreeButton = driver.findElement(By.xpath("//div[@class='policy-consent_actions___YqG_']/button[2]"));
@@ -77,7 +90,10 @@ public class RegFormTest {
 
         WebElement userDataText = driver.findElement(By.xpath("//h1[@class='wrapper_title__hxKZS']"));
         Assert.assertTrue(userDataText.getText().contains("Введите код"));
+    }
 
-      driver.quit();
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
     }
 }
