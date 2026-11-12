@@ -1,8 +1,7 @@
-import org.openqa.selenium.By;
+import by.emall.pages.MainPage;
+import by.emall.pages.RegFormPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +14,8 @@ public class RegFormTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private RegFormPage regFormPage;
+    private MainPage mainPage;
 
     @BeforeMethod
     public void setUp() {
@@ -25,71 +26,34 @@ public class RegFormTest {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        regFormPage = new RegFormPage(driver, wait);
+        mainPage = new MainPage(driver, wait);
     }
 
     @Test
     public void checkRegFormData() throws InterruptedException {
 
-        WebElement closeCookies1 = driver.findElement(By.xpath("//button[contains(@class, 'colour_white__FyCpn')]"));
-        closeCookies1.click();
-
-        WebElement closeCookies2 = driver.findElement(By.xpath("//button[contains(@class, 'colour_white__FyCpn')]"));
-        closeCookies2.click();
-
-        WebElement closeHi = driver.findElement(By.xpath("//button[contains(@class, 'KB1 banner_button')]"));
-        closeHi.click();
-
-        WebElement confirmButton = driver.findElement(By.xpath("//button[contains(@class, 'content_confirm_button')]"));
-        confirmButton.click();
-
-        WebElement logInPic = driver.findElement(By.xpath("//a[@href='https://emall.by/login?backurl=/']/i"));
-        logInPic.click();
-
-        WebElement registrationButton = driver.findElement(By.xpath("//button[contains(@class, 'btn_btn_colour_white')]"));
-        registrationButton.click();
-
-        WebElement firstNameField = driver.findElement(By.xpath("//input[@autocomplete='given-name']"));
-        firstNameField.sendKeys("Sasha");
-
-        WebElement lastNameField = driver.findElement(By.xpath("//input[@autocomplete='family-name']"));
-        lastNameField.sendKeys("Sashin");
-
-        WebElement patronymicNameField = driver.findElement(By.xpath("//input[@autocomplete='additional-name']"));
-        patronymicNameField.sendKeys("Sashevich");
-
-        WebElement phoneNumberField = driver.findElement(By.xpath("//input[@autocomplete='tel']"));
-        phoneNumberField.sendKeys("259999999");
-
-        WebElement eMailField = driver.findElement(By.xpath("//input[@autocomplete='email']"));
-        eMailField.sendKeys("aa@aa.aa");
-
-        WebElement passwordField = driver.findElement(By.xpath("//input[@id='_r_c_']"));
-        passwordField.sendKeys("As000000");
-
-        WebElement rePasswordField = driver.findElement(By.xpath("//input[@id='_r_d_']"));
-        rePasswordField.sendKeys("As000000");
-
-        WebElement userAgreementCheckBox = driver.findElement(By.xpath("//span[contains(text(), ') и')]/parent::div//i"));
-        userAgreementCheckBox.click();
-
-        WebElement userDataCheckBox = driver.findElement(By.xpath("//span[contains(text(), ') с')]/parent::div//i"));
-        userDataCheckBox.click();
-
-        WebElement followDownButton = driver.findElement(By.xpath("//button[contains(@class, 'scroll_to_bottom')]"));
-        followDownButton.click();
+        mainPage.clickCloseCookies1Button();
+        mainPage.clickCloseCookies2Button();
+        mainPage.clickCloseHiButton();
+        mainPage.clickConfirmButton();
+        mainPage.clickLogInPic();
+        regFormPage.clickRegistrationButton();
+        regFormPage.setFirstName("Sasha");
+        regFormPage.setLastName("Sashin");
+        regFormPage.setPatronymicName("Sashevich");
+        regFormPage.setPhoneNumber("259999999");
+        regFormPage.setEMail("aa@aa.aa");
+        regFormPage.setPassword("As000000");
+        regFormPage.setRePassword("As000000");
+        regFormPage.clickUserAgreementCheckBox();
+        regFormPage.clickUserDataCheckBox();
+        regFormPage.clickFollowDownButton();
         Thread.sleep(1000);
-
-        WebElement checkAllCheckBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(@class, 'checkbox__PbQ_G')]//i")));
-        checkAllCheckBox.click();
-
-        WebElement agreeButton = driver.findElement(By.xpath("//div[@class='policy-consent_actions___YqG_']/button[2]"));
-        agreeButton.click();
-
-        WebElement nextButton = driver.findElement(By.xpath("//button[contains(@class, 'btn_btn__jx6SQ')]"));
-        nextButton.click();
-
-        WebElement userDataText = driver.findElement(By.xpath("//h1[@class='wrapper_title__hxKZS']"));
-        Assert.assertTrue(userDataText.getText().contains("Введите код"));
+        regFormPage.clickCheckAllCheckBox();
+        regFormPage.clickAgreeButton();
+        regFormPage.clickNextButton();
+        Assert.assertTrue(regFormPage.getAwaitCodeTitle().getText().contains("Введите код"));
     }
 
     @AfterMethod
