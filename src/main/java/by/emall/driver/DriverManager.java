@@ -7,8 +7,6 @@ import java.util.ResourceBundle;
 
 public class DriverManager {
 
-    static ResourceBundle bundle = ResourceBundle.getBundle("test_framework");
-
     private static WebDriver driver = null;
 
     public static WebDriver getDriver() {
@@ -18,7 +16,6 @@ public class DriverManager {
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.get(bundle.getString("path_to_url"));
         }
         return driver;
     }
