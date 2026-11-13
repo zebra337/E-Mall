@@ -11,10 +11,9 @@ public class RegFormPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public RegFormPage(WebDriver driver, WebDriverWait wait) {
+    public RegFormPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        this.wait = wait;
     }
 
     @FindBy(xpath = "//button[contains(@class, 'btn_btn_colour_white')]")
@@ -90,14 +89,7 @@ public class RegFormPage {
     public void clickNextButton() {
         nextButton.click();
     }
-    public WebElement getAwaitCodeTitle() {
-        return awaitCodeTitle;
+    public String getAwaitCodeTitle() {
+        return awaitCodeTitle.getText();
     }
-//    FormTest: Assert.assertTrue(registrationFormSteps.getUserDataText().contains("Alexan Zin"));
-//    Page:     public WebElement getUserDataText() {
-//        return userDataText;
-//    }
-//    awaitCodeTitle
-//    WebElement userDataText = driver.findElement(By.xpath("//h1[@class='wrapper_title__hxKZS']"));
-//        Assert.assertTrue(userDataText.getText().contains("Введите код"));
 }

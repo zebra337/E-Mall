@@ -1,38 +1,26 @@
+import by.emall.driver.DriverManager;
 import by.emall.pages.MainPage;
 import by.emall.pages.RegFormPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+public class RegFormTest extends BaseTest {
 
-public class RegFormTest {
-
-    private WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriver driver;
     private RegFormPage regFormPage;
     private MainPage mainPage;
 
-    @BeforeMethod
-    public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        System.setProperty("webdriver.chrome.driver", "D:\\0_0_0_Black\\Pzz\\chromedriver.exe");
-        driver.get("https://emall.by");
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        regFormPage = new RegFormPage(driver, wait);
-        mainPage = new MainPage(driver, wait);
+    @BeforeClass
+    public void preparationForTest() {
+        driver = DriverManager.getDriver();
+        mainPage = new MainPage(driver);
+        regFormPage = new RegFormPage(driver);
     }
 
     @Test
     public void checkRegFormData() throws InterruptedException {
-
         mainPage.clickCloseCookies1Button();
         mainPage.clickCloseCookies2Button();
         mainPage.clickCloseHiButton();
@@ -53,11 +41,6 @@ public class RegFormTest {
         regFormPage.clickCheckAllCheckBox();
         regFormPage.clickAgreeButton();
         regFormPage.clickNextButton();
-        Assert.assertTrue(regFormPage.getAwaitCodeTitle().getText().contains("Введите код"));
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
+        Assert.assertTrue(regFormPage.getAwaitCodeTitle().contains("Введите код"));
     }
 }

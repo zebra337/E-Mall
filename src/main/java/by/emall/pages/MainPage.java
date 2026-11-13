@@ -11,10 +11,9 @@ public class MainPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public MainPage(WebDriver driver, WebDriverWait wait) {
+    public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        this.wait = wait;
     }
 
     @FindBy(xpath = "//button[contains(@class, 'colour_white__FyCpn')]")
@@ -45,5 +44,4 @@ public class MainPage {
     public void clickLogInPic() {
         logInPic.click();
     }
-
 }
