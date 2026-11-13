@@ -3,13 +3,13 @@ package by.emall.driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
+import java.util.ResourceBundle;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    static ResourceBundle bundle = ResourceBundle.getBundle("test_framework");
 
-    private DriverManager() {
-    }
+    private static WebDriver driver = null;
 
     public static WebDriver getDriver() {
         if (driver == null) {
@@ -18,7 +18,7 @@ public class DriverManager {
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.get("https://emall.by");
+            driver.get(bundle.getString("path_to_url"));
         }
         return driver;
     }
