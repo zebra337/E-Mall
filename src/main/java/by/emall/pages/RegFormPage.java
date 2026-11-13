@@ -1,10 +1,12 @@
 package by.emall.pages;
 
+import lombok.extern.log4j.Log4j2;
 import by.emall.utils.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Log4j2
 public class RegFormPage extends BasePage {
 
     public RegFormPage(WebDriver driver) {
@@ -73,13 +75,16 @@ public class RegFormPage extends BasePage {
         userDataCheckBox.click();
     }
     public void clickFollowDownButton() {
+        log.info("Click Follow Down Button");
         followDownButton.click();
     }
     public void clickCheckAllCheckBox() {
+        log.info("Check All Check-Box");
         Waiters.waitForVisibility(checkAllCheckBox);
         checkAllCheckBox.click();
     }
     public void clickAgreeButton() {
+        log.info("Click Agree Button");
         agreeButton.click();
     }
     public void clickNextButton() {
