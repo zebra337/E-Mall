@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class RegFormPage extends BasePage {
 
     public RegFormPage(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//button[contains(@class, 'btn_btn_colour_white')]")

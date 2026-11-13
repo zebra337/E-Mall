@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(xpath = "//button[contains(@class, 'colour_white__FyCpn')]")
