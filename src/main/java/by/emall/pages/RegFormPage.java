@@ -1,5 +1,6 @@
 package by.emall.pages;
 
+import by.emall.utils.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -79,6 +80,7 @@ public class RegFormPage {
         followDownButton.click();
     }
     public void clickCheckAllCheckBox() {
+        Waiters.waitForVisibility(checkAllCheckBox);
         checkAllCheckBox.click();
     }
     public void clickAgreeButton() {
