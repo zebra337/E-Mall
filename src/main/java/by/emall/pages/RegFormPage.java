@@ -4,15 +4,10 @@ import by.emall.utils.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class RegFormPage {
-
-    private WebDriver driver;
+public class RegFormPage extends BasePage {
 
     public RegFormPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     @FindBy(xpath = "//button[contains(@class, 'btn_btn_colour_white')]")
