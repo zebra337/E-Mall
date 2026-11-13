@@ -24,7 +24,7 @@ public class RegFormPage extends BasePage {
     @FindBy(xpath = "//input[@autocomplete='tel']")
     private WebElement phoneNumberField;
     @FindBy(xpath = "//input[@autocomplete='email']")
-    private WebElement eMailField;
+    private WebElement mailField;
     @FindBy(xpath = "//input[@id='_r_c_']")
     private WebElement passwordField;
     @FindBy(xpath = "//input[@id='_r_d_']")
@@ -59,8 +59,8 @@ public class RegFormPage extends BasePage {
     public void setPhoneNumber(String phoneNumber) {
         phoneNumberField.sendKeys(phoneNumber);
     }
-    public void setEMail(String eMail) {
-        eMailField.sendKeys(eMail);
+    public void setMail(String mail) {
+        mailField.sendKeys(mail);
     }
     public void setPassword(String password) {
         passwordField.sendKeys(password);

@@ -2,10 +2,10 @@ import by.emall.driver.DriverManager;
 import by.emall.models.UserData;
 import by.emall.pages.MainPage;
 import by.emall.pages.RegFormPage;
+import by.emall.utils.JsonReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class RegFormTest extends BaseTest {
@@ -21,14 +21,7 @@ public class RegFormTest extends BaseTest {
         regFormPage = new RegFormPage(driver);
     }
 
-    @DataProvider(name = "data-provider")
-    public Object[][] dpMethod() {
-        return new Object[][]{
-                {new UserData("Sasha", "Sashin", "Sashevich", "259999999", "aa@aa.aa", "As000000", "As000000", "Введите код")}
-        };
-    }
-
-    @Test(dataProvider = "data-provider")
+    @Test(dataProvider = "userData", dataProviderClass = JsonReader.class)
     public void checkRegFormData(UserData userData) throws InterruptedException {
         mainPage.clickCloseCookies1Button();
         mainPage.clickCloseCookies2Button();
@@ -40,7 +33,7 @@ public class RegFormTest extends BaseTest {
         regFormPage.setLastName(userData.getLastName());
         regFormPage.setPatronymicName(userData.getPatronymicName());
         regFormPage.setPhoneNumber(userData.getPhoneNumber());
-        regFormPage.setEMail(userData.getEMail());
+        regFormPage.setMail(userData.getMail());
         regFormPage.setPassword(userData.getPassword());
         regFormPage.setRePassword(userData.getRePassword());
         regFormPage.clickUserAgreementCheckBox();

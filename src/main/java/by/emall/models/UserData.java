@@ -13,7 +13,7 @@ public class UserData {
     String lastName;
     String patronymicName;
     String phoneNumber;
-    String eMail;
+    String mail;
     String password;
     String rePassword;
     String awaitCodeTitle;

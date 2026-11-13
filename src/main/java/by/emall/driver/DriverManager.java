@@ -3,7 +3,6 @@ package by.emall.driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
-import java.util.ResourceBundle;
 
 public class DriverManager {
 
