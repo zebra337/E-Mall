@@ -22,20 +22,20 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[@href='https://emall.by/login?backurl=/']/i")
     private WebElement logInPic;
 
-    public void clickCloseCookies1Button() {
-        closeCookies1Button.click();
+    public WebElement getCloseCookies1Button() {
+        return closeCookies1Button;
     }
-    public void clickCloseCookies2Button() {
-        closeCookies2Button.click();
+    public WebElement getCloseCookies2Button() {
+        return closeCookies2Button;
     }
-    public void clickCloseHiButton() {
-        closeHiButton.click();
+    public WebElement getCloseHiButton() {
+        return closeHiButton;
     }
-    public void clickConfirmButton() {
-        confirmButton.click();
+    public WebElement getConfirmButton() {
+        return confirmButton;
     }
 
-    public void clickLogInPic() {
-        logInPic.click();
+    public WebElement getLogInPic() {
+        return logInPic;
     }
 }

@@ -1,7 +1,6 @@
 package by.emall.pages;
 
 import lombok.extern.log4j.Log4j2;
-import by.emall.utils.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,53 +43,49 @@ public class RegFormPage extends BasePage {
     @FindBy(xpath = "//h1[@class='wrapper_title__hxKZS']")
     private WebElement awaitCodeTitle;
 
-    public void clickRegistrationButton() {
-        registrationButton.click();
+    public WebElement getRegistrationButton() {
+        return registrationButton;
     }
-    public void setFirstName(String firstName) {
-        firstNameField.sendKeys(firstName);
+    public WebElement getFirstNameField() {
+        return firstNameField;
     }
-    public void setLastName(String lastName) {
-        lastNameField.sendKeys(lastName);
+    public WebElement getLastNameField() {
+        return lastNameField;
     }
-    public void setPatronymicName(String patronymicName) {
-        patronymicNameField.sendKeys(patronymicName);
+    public WebElement getPatronymicNameField() {
+        return patronymicNameField;
     }
-    public void setPhoneNumber(String phoneNumber) {
-        phoneNumberField.sendKeys(phoneNumber);
+    public WebElement getPhoneNumberField() {
+        return phoneNumberField;
     }
-    public void setMail(String mail) {
-        mailField.sendKeys(mail);
+    public WebElement getMailField() {
+        return mailField;
     }
-    public void setPassword(String password) {
-        passwordField.sendKeys(password);
+    public WebElement getPasswordField() {
+        return passwordField;
     }
-    public void setRePassword(String rePassword) {
-        rePasswordField.sendKeys(rePassword);
+    public WebElement getRePasswordField() {
+        return rePasswordField;
     }
-    public void clickUserAgreementCheckBox() {
-        userAgreementCheckBox.click();
+    public WebElement getUserAgreementCheckBox() {
+        return userAgreementCheckBox;
     }
-    public void clickUserDataCheckBox() {
-        userDataCheckBox.click();
+    public WebElement getUserDataCheckBox() {
+        return userDataCheckBox;
     }
-    public void clickFollowDownButton() {
-        log.info("Click Follow Down Button");
-        followDownButton.click();
+    public WebElement getFollowDownButton() {
+        return followDownButton;
     }
-    public void clickCheckAllCheckBox() {
-        log.info("Check All Check-Box");
-        Waiters.waitForVisibility(checkAllCheckBox);
-        checkAllCheckBox.click();
+    public WebElement getCheckAllCheckBox() {
+        return checkAllCheckBox;
     }
-    public void clickAgreeButton() {
-        log.info("Click Agree Button");
-        agreeButton.click();
+    public WebElement getAgreeButton() {
+        return agreeButton;
     }
-    public void clickNextButton() {
-        nextButton.click();
+    public WebElement getNextButton() {
+        return nextButton;
     }
-    public String getAwaitCodeTitle() {
-        return awaitCodeTitle.getText();
+    public WebElement getAwaitCodeTitle() {
+        return awaitCodeTitle;
     }
 }
