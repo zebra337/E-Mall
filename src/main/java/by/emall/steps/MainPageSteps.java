@@ -1,5 +1,6 @@
 package by.emall.steps;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import by.emall.pages.MainPage;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class MainPageSteps {
         mainPage = new MainPage(driver);
     }
 
+    @Step("Close all tech messages")
     public void closeAllTechMessages() {
         log.info("Click Close cookies1 button");
         mainPage.getCloseCookies1Button().click();
@@ -24,6 +26,7 @@ public class MainPageSteps {
         mainPage.getConfirmButton().click();
     }
 
+    @Step("Click LogIn pic")
     public void clickLogInPic() {
         log.info("Click LogIn pic");
         mainPage.getLogInPic().click();

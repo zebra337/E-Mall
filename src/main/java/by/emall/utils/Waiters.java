@@ -9,7 +9,7 @@ import java.time.Duration;
 public class Waiters {
 
     public static void waitForVisibility(WebElement element) {
-        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30))
+        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOf(element));
     }
 }

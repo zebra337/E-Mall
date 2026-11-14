@@ -21,7 +21,7 @@ public class RegFormTest extends BaseTest {
         regFormSteps = new RegFormSteps(driver);
     }
 
-    @Test(dataProvider = "userData", dataProviderClass = JsonReader.class)
+    @Test(description = "Check registration form data.", dataProvider = "userData", dataProviderClass = JsonReader.class)
     public void checkRegFormData(UserData userData) throws InterruptedException {
         mainPageSteps.closeAllTechMessages();
         mainPageSteps.clickLogInPic();
