@@ -23,10 +23,7 @@ public class RegFormTest extends BaseTest {
 
     @Test(dataProvider = "userData", dataProviderClass = JsonReader.class)
     public void checkRegFormData(UserData userData) throws InterruptedException {
-        mainPageSteps.clickCloseCookies1Button();
-        mainPageSteps.clickCloseCookies2Button();
-        mainPageSteps.clickCloseHiButton();
-        mainPageSteps.clickConfirmButton();
+        mainPageSteps.closeAllTechMessages();
         mainPageSteps.clickLogInPic();
         regFormSteps.clickRegistrationButton();
         regFormSteps.setFirstName(userData.getFirstName());

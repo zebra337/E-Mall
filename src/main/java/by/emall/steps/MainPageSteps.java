@@ -13,19 +13,13 @@ public class MainPageSteps {
         mainPage = new MainPage(driver);
     }
 
-    public void clickCloseCookies1Button() {
+    public void closeAllTechMessages() {
         log.info("Click Close cookies1 button");
         mainPage.getCloseCookies1Button().click();
-    }
-    public void clickCloseCookies2Button() {
         log.info("Click Close cookies2 button");
         mainPage.getCloseCookies2Button().click();
-    }
-    public void clickCloseHiButton() {
         log.info("Click Close Hi button");
         mainPage.getCloseHiButton().click();
-    }
-    public void clickConfirmButton() {
         log.info("Click Confirm button");
         mainPage.getConfirmButton().click();
     }
