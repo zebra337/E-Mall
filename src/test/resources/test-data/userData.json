@@ -1,0 +1,12 @@
+[
+  {
+    "firstName": "Sasha",
+    "lastName": "Sashin",
+    "patronymicName": "Sashevich",
+    "phoneNumber": "259999999",
+    "mail": "aa@aa.aa",
+    "password": "As000000",
+    "rePassword": "As000000",
+    "awaitCodeTitle": "Введите код"
+  }
+]
